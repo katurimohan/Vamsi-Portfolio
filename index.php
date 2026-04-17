@@ -1,0 +1,506 @@
+<?php
+$statusMsg = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = strip_tags(trim($_POST["name"] ?? ""));
+    $email = filter_var(trim($_POST["email"] ?? ""), FILTER_SANITIZE_EMAIL);
+    $subject = strip_tags(trim($_POST["subject"] ?? "New Contact Form Submission"));
+    $message = trim($_POST["note"] ?? "");
+
+    if (empty($name) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $statusMsg = "<div class='alert alert-danger'>Please fill all required fields completely and with a valid email.</div>";
+    } else {
+        $recipient = "vamsinalluri806@gmail.com";
+        $email_headers = "From: $name <$email>";
+        $email_content = "Name: $name\n";
+        $email_content .= "Email: $email\n\n";
+        $email_content .= "Message:\n$message\n";
+        
+        if (mail($recipient, $subject, $email_content, $email_headers)) {
+            $statusMsg = "<div class='alert alert-success'>Thank you! Your message has been sent.</div>";
+        } else {
+            $statusMsg = "<div class='alert alert-danger'>Oops! Something went wrong and we couldn't send your message.</div>";
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Krishna Vamsi">
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <title>Krishna Vamsi - Software Engineer Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+
+    <!-- start preloader -->
+    <div class="preloader">
+        <div class="vertical-centered-box">
+            <div class="content">
+                <div class="loader-circle"></div>
+                <div class="loader-line-mask">
+                    <div class="loader-line"></div>
+                </div>
+                <img src="assets/images/favicon.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- end preloader -->
+
+    <!-- Start header -->
+    <header id="header" class="wpo-site-header">
+        <nav class="navigation navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.php">Krishna<span>Vamsi.</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navigation" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav mb-2 mb-lg-0 ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#skill">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- end of header -->
+
+    <!-- start of hero -->
+    <section class="static-hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col col-lg-6 col-md-12 col-12">
+                    <div class="wpo-static-hero-text-nd">
+                        <h5>Hello, I am</h5>
+                        <h1>Krishna <span>Vamsi</span></h1>
+                        <p>Software Engineer @ <strong>SNAD Developers</strong></p>
+                        <div class="hero-btn">
+                            <a href="assets/pdf/Krishna_Vamsi_Resume.pdf" class="theme-btn" download>Download CV</a>
+                            <a href="#contact" class="theme-btn-s2">Hire Me</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-lg-6 col-md-12 col-12">
+                    <div class="static-hero-img">
+                        <div class="hero-image-wrapper">
+                            <div class="static-hero-img-inner">
+                                <img src="assets/images/PROFILE-PHOTO.jpeg" alt="Krishna Vamsi">
+                            </div>
+                            <!-- Floating Badges -->
+                            <div class="floating-badge fb-top-left">
+                                <i class="fab fa-angular" style="color: #dd0031;"></i>
+                            </div>
+                            <div class="floating-badge fb-top-right">
+                                <i class="fab fa-react" style="color: #61dafb;"></i>
+                            </div>
+                            <div class="floating-badge fb-bottom-right">
+                                <i class="fab fa-js-square" style="color: #f7df1e;"></i>
+                            </div>
+                            <div class="floating-badge fb-bottom-left">
+                                <span style="color: #3178c6; font-family: sans-serif; font-weight: 800; font-size: 28px;">TS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of hero -->
+
+    <!-- start stats-section -->
+    <section class="wpo-stats-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="wpo-stats-wrap">
+                        <div class="wpo-stats-grid">
+                            <div class="wpo-stats-content">
+                                <h3>2+</h3>
+                                <p>Years Experience</p>
+                            </div>
+                        </div>
+                        <div class="wpo-stats-grid">
+                            <div class="wpo-stats-content">
+                                <h3>3+</h3>
+                                <p>Major Projects</p>
+                            </div>
+                        </div>
+                        <div class="wpo-stats-grid">
+                            <div class="wpo-stats-content">
+                                <h3>12+</h3>
+                                <p>Technical Skills</p>
+                            </div>
+                        </div>
+                        <div class="wpo-stats-grid">
+                            <div class="wpo-stats-content">
+                                <h3>100%</h3>
+                                <p>Commitment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end stats-section -->
+
+    <!-- start wpo-about-section -->
+    <section class="wpo-about-section section-padding" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="wpo-about-img">
+                        <img src="assets/images/PROFILE-PHOTO.jpeg" alt="Krishna Vamsi">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="wpo-about-text">
+                        <div class="wpo-section-title">
+                            <span>About Me</span>
+                            <h2>Innovative Software Engineer Driving Digital Excellence</h2>
+                        </div>
+                        <p>Results-driven Software Engineer with 2+ years of hands-on experience in building dynamic, responsive web applications using Angular, React.js, TypeScript, and REST APIs. Proven ability to deliver end-to-end frontend solutions through real-world projects including an HR Management System and a ride-hailing platform (Valam).</p>
+                        <p>Passionate about writing clean, scalable code and creating seamless user experiences that drive business value.</p>
+                        <div class="about-info">
+                            <ul>
+                                <li><strong>Name:</strong> Krishna Vamsi</li>
+                                <li><strong>Date of Birth:</strong> 12 August 2001</li>
+                                <li><strong>Address:</strong> West Godavari Dist, Andhra Pradesh</li>
+                                <li><strong>Email:</strong> vamsinalluri806@gmail.com</li>
+                                <li><strong>Phone:</strong> +91 9573660370</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end wpo-about-section -->
+
+    <!-- start wpo-service-section -->
+    <section class="wpo-service-section section-padding" id="expertise">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <div class="wpo-section-title">
+                        <span>Technical Expertise</span>
+                        <h2>My Core Competencies</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-service-item">
+                        <div class="icon"><i class="fab fa-angular"></i></div>
+                        <h2>Frontend Development</h2>
+                        <p>Expertise in building scalable SPAs using Angular and React.js, focusing on component-based architecture and performance.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-service-item">
+                        <div class="icon"><i class="fas fa-layer-group"></i></div>
+                        <h2>State Management</h2>
+                        <p>Proficient in managing complex application states using Redux and RxJS, ensuring predictable data flow.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-service-item">
+                        <div class="icon"><i class="fas fa-server"></i></div>
+                        <h2>API Integration</h2>
+                        <p>Seamlessly connecting frontends with backends via REST APIs using Axios and modern asynchronous techniques.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-service-item">
+                        <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h2>Responsive UI/UX</h2>
+                        <p>Designing mobile-first interfaces with Bootstrap and PrimeNG for a consistent user experience across devices.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-service-item">
+                        <div class="icon"><i class="fab fa-github"></i></div>
+                        <h2>Version Control</h2>
+                        <p>Fluent in Git/GitHub workflows for collaborative development, code reviews, and version tracking.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-service-item">
+                        <div class="icon"><i class="fas fa-location-arrow"></i></div>
+                        <h2>Real-time Solutions</h2>
+                        <p>Implementing real-time features like tracking and notifications using Google Maps API and Firebase.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end wpo-service-section -->
+
+    <!-- start wpo-skill-section -->
+    <section class="wpo-skill-section section-padding" id="skill">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="wpo-skill-text">
+                        <div class="wpo-section-title">
+                            <span>My Skills</span>
+                            <h2>Technical Proficiencies</h2>
+                        </div>
+                        <p>Comprehensive knowledge of modern web technologies, from core fundamentals to advanced frameworks and tools.</p>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-12 col-12">
+                    <div class="wpo-skill-wrap">
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                        <span class="skill-badge">Bootstrap</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">TypeScript</span>
+                        <span class="skill-badge">Angular</span>
+                        <span class="skill-badge">React.js</span>
+                        <span class="skill-badge">Redux</span>
+                        <span class="skill-badge">PrimeNG</span>
+                        <span class="skill-badge">Axios</span>
+                        <span class="skill-badge">REST APIs</span>
+                        <span class="skill-badge">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end wpo-skill-section -->
+
+    <!-- start wpo-work-experience-area -->
+    <section class="wpo-work-experience-area section-padding" id="experience">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="wpo-section-title">
+                        <span>Work Experience</span>
+                        <h2>Professional Journey</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="wpo-work-experience-wrap">
+                <div class="wpo-work-experience-item">
+                    <div class="wpo-work-experience-year">March 2024 - Present</div>
+                    <div class="wpo-work-experience-content">
+                        <h3>Software Engineer</h3>
+                        <p>SNAD Developers, Hyderabad, India</p>
+                        <ul>
+                            <li>Leading frontend development for enterprise-grade applications.</li>
+                            <li>Architected and delivered the HR Management System and Valam Ride-Hailing platform.</li>
+                            <li>Collaborating with backend teams for seamless API integration.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end wpo-work-experience-area -->
+
+    <!-- start wpo-portfolio-section -->
+    <section class="wpo-portfolio-section section-padding" id="portfolio">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="wpo-section-title">
+                        <span>Portfolio</span>
+                        <h2>Recent Projects</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-portfolio-item">
+                        <div class="wpo-portfolio-img">
+                            <img src="assets/images/hrms.png" alt="HR Management System">
+                        </div>
+                        <div class="wpo-portfolio-text">
+                            <h3>HR Management System</h3>
+                            <span>Angular, .NET, PrimeNG</span>
+                            <p>Automated HR operations including attendance, payroll, and document management.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-portfolio-item">
+                        <div class="wpo-portfolio-img">
+                            <img src="assets/images/valam.png" alt="Valam Ride-Hailing">
+                        </div>
+                        <div class="wpo-portfolio-text">
+                            <h3>Valam (Ride-Hailing)</h3>
+                            <span>Angular, Google Maps API, Firebase</span>
+                            <p>Real-time booking and tracking system for bike and car rides.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-portfolio-item">
+                        <div class="wpo-portfolio-img">
+                            <img src="assets/images/ecommerce.png" alt="E-commerce App">
+                        </div>
+                        <div class="wpo-portfolio-text">
+                            <h3>E-commerce Application</h3>
+                            <span>React.js, Redux, Axios</span>
+                            <p>Dynamic product listing, cart management, and secure checkout flows.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end wpo-portfolio-section -->
+
+    <!-- start education-section -->
+    <section class="wpo-education-section section-padding" id="education">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="wpo-section-title">
+                        <span>Education</span>
+                        <h2>Academic Background</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-edu-item">
+                        <h3>2019 - 2023</h3>
+                        <h2>B.Tech (Civil Engineering)</h2>
+                        <p>JNTUK, Sasi Institute of Technology & Engineering</p>
+                        <span>CGPA: 6.2</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-edu-item">
+                        <h3>2017 - 2019</h3>
+                        <h2>Intermediate</h2>
+                        <p>Narayana Junior College</p>
+                        <span>CGPA: 7.6</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="wpo-edu-item">
+                        <h3>2016</h3>
+                        <h2>SSC</h2>
+                        <p>Manasa English Medium High School</p>
+                        <span>CGPA: 7.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="certification-wrap mt-5">
+                <h3>Certifications</h3>
+                <div class="cert-item">
+                    <h4>ChatGPT for Everyone - Learn Prompting</h4>
+                    <p>Issued: April 3, 2026 | ID: ut1yxkaefd</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end education-section -->
+
+    <!-- start wpo-contact-section -->
+    <section class="wpo-contact-section section-padding" id="contact">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="wpo-contact-info">
+                        <h2>Contact Info</h2>
+                        <div class="info-item">
+                            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="text">
+                                <h3>Location</h3>
+                                <p>West Godavari Dist, Andhra Pradesh</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon"><i class="fas fa-envelope"></i></div>
+                            <div class="text">
+                                <h3>Email</h3>
+                                <p><a href="mailto:vamsinalluri806@gmail.com">vamsinalluri806@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="text">
+                                <h3>Phone</h3>
+                                <p>+91 9573660370</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="wpo-contact-form-area">
+                        <form method="post" action="index.php#contact" class="contact-validation-active" id="contact-form-main">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name*">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email*">
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject*">
+                                </div>
+                                <div class="col-lg-12">
+                                    <textarea class="form-control" name="note" id="note" placeholder="Message*"></textarea>
+                                </div>
+                                <div class="col-lg-12">
+                                    <?php if(!empty($statusMsg)) echo $statusMsg; ?>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button type="submit" class="theme-btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end wpo-contact-section -->
+
+    <!-- start wpo-site-footer -->
+    <footer class="wpo-site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright">
+                        <p>© 2026 Krishna Vamsi. All rights reserved.</p>
+                        <ul class="social-links">
+                            <li><a href="http://www.linkedin.com/in/krishna-vamsi-503986249" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-github"></i></a></li>
+                            <li><a href="mailto:vamsinalluri806@gmail.com"><i class="fas fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end wpo-site-footer -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(window).on('load', function() {
+            $('.preloader').fadeOut('slow');
+        });
+    </script>
+</body>
+
+</html>

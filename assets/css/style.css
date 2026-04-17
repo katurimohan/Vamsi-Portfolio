@@ -1,0 +1,587 @@
+/*--------------------------------------------------------------
+# [Table of contents]
+1. General
+2. Navbar
+3. Hero
+4. About
+5. Expertise
+6. Skills
+7. Experience
+8. Portfolio
+9. Education
+10. Contact
+11. Footer
+--------------------------------------------------------------*/
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --dark-bg: #111;
+    --light-bg: #f8f9fa;
+    --text-color: #333;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+    --border-radius: 12px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    color: var(--dark-bg);
+}
+
+a {
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.wpo-section-title {
+    margin-bottom: 60px;
+}
+
+.wpo-section-title span {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.wpo-section-title h2 {
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+/* 2. Navbar */
+.navbar {
+    padding: 20px 0;
+    background: transparent;
+    transition: var(--transition);
+}
+
+.navbar.fixed-top {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--dark-bg) !important;
+}
+
+.navbar-brand span {
+    color: var(--primary-color);
+}
+
+.nav-link {
+    font-weight: 600;
+    color: var(--dark-bg) !important;
+    margin-left: 20px;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* 3. Hero */
+.static-hero {
+    height: 100vh;
+    min-height: 700px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.wpo-static-hero-text-nd h5 {
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.wpo-static-hero-text-nd h1 {
+    font-size: 70px;
+    margin: 10px 0 20px;
+}
+
+.wpo-static-hero-text-nd h1 span {
+    color: var(--primary-color);
+}
+
+.theme-btn,
+.theme-btn-s2 {
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.theme-btn {
+    background: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--primary-color);
+}
+
+.theme-btn:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.theme-btn-s2 {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    margin-left: 15px;
+}
+
+.theme-btn-s2:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.static-hero-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.static-hero-img-inner {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 15px solid var(--white);
+    box-shadow: 0 15px 40px rgba(0, 123, 255, 0.15);
+    margin: 0 auto;
+    position: relative;
+}
+
+.static-hero-img-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 450px;
+    width: 100%;
+}
+
+.floating-badge {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: var(--white);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    font-size: 40px;
+    animation: float 6s infinite ease-in-out;
+    z-index: 5;
+}
+
+.floating-badge-card {
+    position: absolute;
+    background: var(--white);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    animation: float 6s infinite ease-in-out reverse;
+    z-index: 5;
+}
+
+.floating-badge-card .icon {
+    font-size: 28px;
+    color: #28a745;
+    margin-right: 15px;
+}
+
+.floating-badge-card .text h4 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.floating-badge-card .text p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--secondary-color);
+}
+
+.fb-top-left {
+    top: 10%;
+    left: -3%;
+    animation-delay: 0s;
+}
+
+.fb-top-right {
+    top: 15%;
+    right: -5%;
+    animation-delay: 1s;
+}
+
+.fb-bottom-right {
+    bottom: 10%;
+    right: -5%;
+    animation-delay: 2s;
+}
+
+.fb-bottom-left {
+    bottom: 5%;
+    left: -1%;
+    animation-delay: 1.5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* 4. Stats */
+.wpo-stats-section {
+    padding: 50px 0;
+    background: var(--white);
+}
+
+.wpo-stats-wrap {
+    display: flex;
+    justify-content: space-around;
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.wpo-stats-content h3 {
+    font-size: 45px;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.wpo-stats-content p {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin: 0;
+}
+
+/* 5. About */
+.wpo-about-img {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.wpo-about-img img {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.about-info ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.about-info ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.about-info ul li strong {
+    width: 100px;
+    display: inline-block;
+    color: var(--primary-color);
+}
+
+/* 6. Expertise */
+.wpo-service-item {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    height: 100%;
+    transition: var(--transition);
+    border-bottom: 4px solid transparent;
+}
+
+.wpo-service-item:hover {
+    transform: translateY(-10px);
+    border-bottom-color: var(--primary-color);
+}
+
+.wpo-service-item .icon {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* 7. Skills */
+.skill-badge {
+    display: inline-block;
+    padding: 10px 25px;
+    background: var(--white);
+    border: 1px solid #dee2e6;
+    border-radius: 50px;
+    font-weight: 600;
+    margin: 5px;
+    color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+.skill-badge:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+/* 8. Experience */
+.wpo-work-experience-item {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.wpo-work-experience-year {
+    flex: 0 0 200px;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 18px;
+}
+
+.wpo-work-experience-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.wpo-work-experience-content p {
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+/* 9. Portfolio */
+.wpo-portfolio-item {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+    transition: var(--transition);
+}
+
+.wpo-portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.wpo-portfolio-img {
+    overflow: hidden;
+}
+
+.wpo-portfolio-img img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.wpo-portfolio-item:hover .wpo-portfolio-img img {
+    transform: scale(1.05);
+}
+
+.wpo-portfolio-text {
+    padding: 30px;
+}
+
+.wpo-portfolio-text h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.wpo-portfolio-text span {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* 10. Education */
+.wpo-edu-item {
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    border-left: 5px solid var(--primary-color);
+}
+
+.certification-wrap h3 {
+    margin-bottom: 20px;
+}
+
+.cert-item {
+    padding: 20px;
+    background: #eef1f5;
+    border-radius: 8px;
+}
+
+/* 11. Contact */
+.wpo-contact-info {
+    background: var(--primary-color);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    color: var(--white);
+}
+
+.wpo-contact-info h2 {
+    color: var(--white);
+    margin-bottom: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.info-item .icon {
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.info-item .text h3 {
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.info-item .text p {
+    margin: 0;
+}
+
+.info-item .text a {
+    color: var(--white);
+}
+
+.wpo-contact-form-area {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.wpo-contact-form-area .form-control {
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.wpo-contact-form-area .form-control:focus {
+    background: var(--white);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.1);
+}
+
+.wpo-contact-form-area textarea.form-control {
+    height: 180px;
+    resize: none;
+}
+
+.wpo-contact-form-area .theme-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.25);
+}
+
+.wpo-contact-form-area .theme-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 123, 255, 0.35);
+}
+
+/* 12. Footer */
+.wpo-site-footer {
+    padding: 50px 0;
+    background: var(--dark-bg);
+    color: #ccc;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-links li {
+    margin: 0 10px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background: #333;
+    display: block;
+    color: var(--white);
+    text-align: center;
+}
+
+.social-links a:hover {
+    background: var(--primary-color);
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+}
